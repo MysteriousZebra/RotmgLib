@@ -21,6 +21,8 @@ namespace RotmgLib.Network
     public delegate void ShootHandler(byte bullet_id, int owner_id, short container_type, TilePoint starting_position, float angle, short damage);
     public delegate void DamageHandler(int target_id, byte condition_effect, ushort damage_amount, byte bullet_id, int object_id);
     public delegate void UpdateHandler(TilePoint[] tiles, GameObject[] new_objects, int[] drops);
+    public delegate void NotificationHandler(int object_id, string text);
+    public delegate void NewTickHandler(int tick_id, int tick_time, ObjectStatusData[] statuses);
     public delegate void MapInfoHandler(int width, int height, string name, uint fp, int background, string[] extra_xml);
 
     public class RotmgClient : ServerConnection
@@ -30,6 +32,9 @@ namespace RotmgLib.Network
         public event TextHandler OnText;
         public event ShootHandler OnShoot;
         public event DamageHandler OnDamage;
+        public event UpdateHandler OnUpdate;
+        public event NotificationHandler OnNotification;
+        public event NewTickHandler OnNewTick;
         public event MapInfoHandler OnMapInfo;
 
         public RotmgClient(string host)
@@ -77,6 +82,11 @@ namespace RotmgLib.Network
             this.SendPacket(new PlayerTextPacket(text));
         }
 
+        public void SendMessage()
+        {
+            this.SendPacket(new MessagePacket());
+        }
+
         protected override void OnReceive(int size, byte opcode, byte[] packet)
         {
             InPacket in_packet = InPacket.Parse((Opcode)opcode, packet);
@@ -116,6 +126,27 @@ namespace RotmgLib.Network
                     {
                         DamagePacket damage = (DamagePacket)in_packet;
                         this.OnDamage(damage.TargetId, damage.ConditionEffect, damage.DamageAmount, damage.BulletId, damage.ObjectId);
+                    }
+                    break;
+                case Opcode.UPDATE:
+                    if (this.OnUpdate != null)
+                    {
+                        UpdatePacket update = (UpdatePacket)in_packet;
+                        this.OnUpdate(update.Tiles, update.NewObjects, update.Drops);
+                    }
+                    break;
+                case Opcode.NOTIFICATION:
+                    if (this.OnNotification != null)
+                    {
+                        NotificationPacket notification = (NotificationPacket)in_packet;
+                        this.OnNotification(notification.ObjectId, notification.Text);
+                    }
+                    break;
+                case Opcode.NEW_TICK:
+                    if (this.OnNewTick != null)
+                    {
+                        NewTickPacket new_tick = (NewTickPacket)in_packet;
+                        this.OnNewTick(new_tick.TickId, new_tick.TickTime, new_tick.Statuses);
                     }
                     break;
                 case Opcode.MAPINFO:

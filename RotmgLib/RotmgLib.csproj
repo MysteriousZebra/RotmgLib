@@ -55,7 +55,10 @@
     <Compile Include="Network\Protocol\Packets\HelloPacket.cs" />
     <Compile Include="Network\Protocol\Packets\InPacket.cs" />
     <Compile Include="Network\Protocol\Packets\MapInfoPacket.cs" />
+    <Compile Include="Network\Protocol\Packets\MessagePacket.cs" />
     <Compile Include="Network\Protocol\Packets\MovePacket.cs" />
+    <Compile Include="Network\Protocol\Packets\NewTickPacket.cs" />
+    <Compile Include="Network\Protocol\Packets\NotificationPacket.cs" />
     <Compile Include="Network\Protocol\Packets\OutPacket.cs" />
     <Compile Include="Network\Protocol\Packets\PacketOpcodeAttribute.cs" />
     <Compile Include="Network\Protocol\Packets\PlayerShootPacket.cs" />
