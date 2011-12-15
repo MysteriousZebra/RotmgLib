@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("RotmgLibExample")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Hewlett-Packard")]
+[assembly: AssemblyCompany("Mysterious Zebra")]
 [assembly: AssemblyProduct("RotmgLibExample")]
-[assembly: AssemblyCopyright("Copyright © Hewlett-Packard 2011")]
+[assembly: AssemblyCopyright("Copyright © Mysterious Zebra 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
