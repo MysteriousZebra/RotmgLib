@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{21B78717-0FEB-4999-9942-0E0594E07A7C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RotmgLib</RootNamespace>
+    <AssemblyName>RotmgLib</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto">
+      <HintPath>.\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Crypto\RC4.cs" />
+    <Compile Include="Network\Protocol\Item.cs" />
+    <Compile Include="Network\Protocol\GameObject.cs" />
+    <Compile Include="Network\Protocol\ObjectStatusData.cs" />
+    <Compile Include="Network\Protocol\Opcode.cs" />
+    <Compile Include="Network\Protocol\Packets\CreatePacket.cs" />
+    <Compile Include="Network\Protocol\Packets\CreateSuccessPacket.cs" />
+    <Compile Include="Network\Protocol\Packets\DamagePacket.cs" />
+    <Compile Include="Network\Protocol\Packets\FailurePacket.cs" />
+    <Compile Include="Network\Protocol\Packets\HelloPacket.cs" />
+    <Compile Include="Network\Protocol\Packets\InPacket.cs" />
+    <Compile Include="Network\Protocol\Packets\MapInfoPacket.cs" />
+    <Compile Include="Network\Protocol\Packets\MovePacket.cs" />
+    <Compile Include="Network\Protocol\Packets\OutPacket.cs" />
+    <Compile Include="Network\Protocol\Packets\PacketOpcodeAttribute.cs" />
+    <Compile Include="Network\Protocol\Packets\PlayerShootPacket.cs" />
+    <Compile Include="Network\Protocol\Packets\PlayerTextPacket.cs" />
+    <Compile Include="Network\Protocol\Packets\ShootPacket.cs" />
+    <Compile Include="Network\Protocol\Packets\TextPacket.cs" />
+    <Compile Include="Network\Protocol\Packets\UpdatePacket.cs" />
+    <Compile Include="Network\Protocol\ProtocolReader.cs" />
+    <Compile Include="Network\Protocol\ProtocolWriter.cs" />
+    <Compile Include="Network\Protocol\SlotObject.cs" />
+    <Compile Include="Network\Protocol\StatData.cs" />
+    <Compile Include="Network\Protocol\TilePoint.cs" />
+    <Compile Include="Network\RotmgClient.cs" />
+    <Compile Include="Network\ServerConnection.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Crypto\RSACryptString.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Network\Protocol\EventArgs\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
