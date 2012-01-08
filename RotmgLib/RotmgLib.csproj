@@ -54,6 +54,7 @@
     <Compile Include="Network\Protocol\Packets\FailurePacket.cs" />
     <Compile Include="Network\Protocol\Packets\HelloPacket.cs" />
     <Compile Include="Network\Protocol\Packets\InPacket.cs" />
+    <Compile Include="Network\Protocol\Packets\InventorySwapPacket.cs" />
     <Compile Include="Network\Protocol\Packets\MapInfoPacket.cs" />
     <Compile Include="Network\Protocol\Packets\MessagePacket.cs" />
     <Compile Include="Network\Protocol\Packets\MovePacket.cs" />
@@ -64,8 +65,10 @@
     <Compile Include="Network\Protocol\Packets\PlayerShootPacket.cs" />
     <Compile Include="Network\Protocol\Packets\PlayerTextPacket.cs" />
     <Compile Include="Network\Protocol\Packets\ShootPacket.cs" />
+    <Compile Include="Network\Protocol\Packets\ShowEffectPacket.cs" />
     <Compile Include="Network\Protocol\Packets\TextPacket.cs" />
     <Compile Include="Network\Protocol\Packets\UpdatePacket.cs" />
+    <Compile Include="Network\Protocol\Packets\UseItemPacket.cs" />
     <Compile Include="Network\Protocol\ProtocolReader.cs" />
     <Compile Include="Network\Protocol\ProtocolWriter.cs" />
     <Compile Include="Network\Protocol\SlotObject.cs" />

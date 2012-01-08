@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RotmgLib.Network.Protocol
 {
-    class TradeItem
+    public class TradeItem
     {
         public int Item
         { get; set; }

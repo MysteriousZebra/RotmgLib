@@ -23,7 +23,7 @@ namespace RotmgLib.Network
     public delegate void UpdateHandler(TilePoint[] tiles, GameObject[] new_objects, int[] drops);
     public delegate void NotificationHandler(int object_id, string text);
     public delegate void NewTickHandler(int tick_id, int tick_time, ObjectStatusData[] statuses);
-    public delegate void MapInfoHandler(int width, int height, string name, uint fp, int background, string[] extra_xml);
+    public delegate void MapInfoHandler(int width, int height, string name, uint fp, int background, bool allow_player_teleport, bool show_displays, string[] extra_xml);
 
     public class RotmgClient : ServerConnection
     {
@@ -85,6 +85,16 @@ namespace RotmgLib.Network
         public void SendMessage()
         {
             this.SendPacket(new MessagePacket());
+        }
+
+        public void SendInventorySwap(int time, TilePoint position, SlotObject slot_object1, SlotObject slot_object2)
+        {
+            this.SendPacket(new InventorySwapPacket(time, position, slot_object1, slot_object2));
+        }
+
+        public void SendUseItem(int time, int object_id, byte slot_id, TilePoint item_use_position)
+        {
+            this.SendPacket(new UseItemPacket(time, object_id, slot_id, item_use_position));
         }
 
         protected override void OnReceive(int size, byte opcode, byte[] packet)
@@ -153,7 +163,7 @@ namespace RotmgLib.Network
                     if (this.OnMapInfo != null)
                     {
                         MapInfoPacket map_info = (MapInfoPacket)in_packet;
-                        this.OnMapInfo(map_info.Width, map_info.Height, map_info.Name, map_info.FP, map_info.Background, map_info.ExtraXml);
+                        this.OnMapInfo(map_info.Width, map_info.Height, map_info.Name, map_info.FP, map_info.Background, map_info.AllowPlayerTeleport, map_info.ShowDisplays, map_info.ExtraXml);
                     }
                     break;
             }

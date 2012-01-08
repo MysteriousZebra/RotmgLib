@@ -18,6 +18,10 @@ namespace RotmgLib.Network.Protocol.Packets
         { get; private set; }
         public int Background
         { get; private set; }
+        public bool AllowPlayerTeleport
+        { get; private set; }
+        public bool ShowDisplays
+        { get; private set; }
         public string[] ExtraXml
         { get; private set; }
 
@@ -30,6 +34,8 @@ namespace RotmgLib.Network.Protocol.Packets
             this.Name = reader.ReadString();
             this.FP = reader.ReadUInt32();
             this.Background = reader.ReadInt32();
+            this.AllowPlayerTeleport = reader.ReadBool();
+            this.ShowDisplays = reader.ReadBool();
             this.ExtraXml = reader.ReadVector<string>(new ReadItemDelegate(reader.ReadLongString));
         }
     }

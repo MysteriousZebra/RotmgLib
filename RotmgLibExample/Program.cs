@@ -11,13 +11,13 @@ namespace RotmgLibExample
     {
         static void Main(string[] args)
         {
-            RotmgClient client = new RotmgClient("ec2-50-18-76-162.us-west-1.compute.amazonaws.com");
+            RotmgClient client = new RotmgClient("ec2-50-18-235-85.us-west-1.compute.amazonaws.com");
 
             client.OnFailure += new FailureHandler(client_OnFailure);
             client.OnMapInfo += new MapInfoHandler(client_OnMapInfo);
 
             client.Connect();
-            client.SendHello("120.4", -2, "thisisatestguid", "", "");
+            client.SendHello("120.10.2", -2, "thisisatestguid", "", "");
         }
 
         static void client_OnFailure(int error_id, string error_description)
@@ -25,7 +25,7 @@ namespace RotmgLibExample
             Console.WriteLine("Error {0}: {1}", error_id, error_description);
         }
 
-        static void client_OnMapInfo(int width, int height, string name, uint fp, int background, string[] extra_xml)
+        static void client_OnMapInfo(int width, int height, string name, uint fp, int background, bool allow_player_teleport, bool show_displays, string[] extra_xml)
         {
             if (extra_xml.Length == 0)
                 Console.WriteLine("No new XML available.");

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RotmgLib.Network.Protocol
 {
-    class ObjectStatusData
+    public class ObjectStatusData
     {
         public int ObjectId
         { get; set; }

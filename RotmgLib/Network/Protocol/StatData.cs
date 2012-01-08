@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RotmgLib.Network.Protocol
 {
-    class StatData
+    public class StatData
     {
         public byte Type
         { get; set; }

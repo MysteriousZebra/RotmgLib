@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RotmgLib.Network.Protocol
 {
-    class GameObject
+    public class GameObject
     {
         public int ObjectType
         { get; set; }
